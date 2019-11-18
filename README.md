@@ -1,7 +1,7 @@
 ![License](https://img.shields.io/badge/license-MIT-yellow.svg)
 ![Python](https://img.shields.io/badge/Python-3.7-green.svg)
-![Platform](https://img.shields.io/badge/Platform-iOS%20|%20tvOS%20|%20watchOS%20|%20macOS-red.svg)
 ![Xcode](https://img.shields.io/badge/Xcode-9%20or%20hier-blue.svg)
+![Platform](https://img.shields.io/badge/Platform-iOS%20|%20tvOS%20|%20watchOS%20|%20macOS-red.svg)
 
 # NXColorsetMaker
 NXColorsetMaker can make colorsets for Xcode from Excel file.
