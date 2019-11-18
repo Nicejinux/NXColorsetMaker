@@ -8,10 +8,12 @@ I needed to apply iOS / tvOS dark mode. but there were so many things to do and 
 
 # How it works
 When you make a colorset on Xcode, JSON file and directory is generated. so __NXColorsetMaker__ makes same directory and JSON file from an Excel file.  
+![Alt text](xcode_json_screen.png?raw=true)
 
-I chose HEX format for color values, but you can change to float value format.
+And, __NXColorsetMaker__ output color values are HEX format, but you can change to float value format.
+
 ```ruby
-HEX: getFormattedHexValue()
+HEX: getFormattedHexValue() # default
 Float: getFormattedFloatValue()
 ```
 
@@ -52,3 +54,39 @@ $ python3 makeColorSet.py
 or
 $ python3 makeColorSet.py -f ~/colors.xlsx -t universal iphone ipad -c -d ~/repository/myproject/image.xcassets/colorSets
 ```
+
+# Author
+This is [Jinwook Jeon](http://Nicejinux.NET).   
+I've been working as an iOS developer in Korea.  
+This is my first Python script, so there can be lots of weird things in this source.  
+I'm waiting for your comments, suggestions, fixes, everything what you want to say.  
+Feel free to contact me.
+
+ - email : nicejinux@gmail.com
+ - facebook : http://facebook.com/Nicejinux
+ - homepage : http://Nicejinux.NET
+
+
+# MIT License
+
+	Copyright (c) 2019 Jinwook Jeon. All rights reserved.
+
+	Permission is hereby granted, free of charge, to any person obtaining a
+	copy of this software and associated documentation files (the "Software"),
+	to deal in the Software without restriction, including
+	without limitation the rights to use, copy, modify, merge, publish,
+	distribute, sublicense, and/or sell copies of the Software, and to
+	permit persons to whom the Software is furnished to do so, subject to
+	the following conditions:
+
+	The above copyright notice and this permission notice shall be included
+	in all copies or substantial portions of the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+	OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+	MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+	IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+	CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+	TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+	SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+	
