@@ -26,10 +26,15 @@ Float: getFormattedFloatValue()
 
 # Install component
 ## openpyxl
- You should install __*openpyxl*__ to read an Excel file. I assume that you are using python3.
+You should install __*openpyxl*__ to read an Excel file. I assume that you are using python3.
 ```ruby
 $ sudo pip3 install openpyxl
 ```
+
+## makeColorsets
+Download __makeColorsets.py__ and __colorSheet.xlsx__ where you want.  
+Fill all the colors that you are using with designers in the Excel file properly.
+
 
 # Usage
 ## Options
