@@ -34,6 +34,7 @@ $ sudo pip3 install openpyxl
 # Usage
 ## Options
 ```swift
+  -h, --help            show this help message and exit
   -f EXCEL_FILE_NAME, --file EXCEL_FILE_NAME
                         excel file name.
                         default: ./colorSheet.xlsx
