@@ -1,6 +1,6 @@
 ![License](https://img.shields.io/badge/license-MIT-yellow.svg)
 ![Python](https://img.shields.io/badge/Python-3.7-green.svg)
-![Xcode](https://img.shields.io/badge/Xcode-9%20or%20hier-blue.svg)
+![Xcode](https://img.shields.io/badge/Xcode-9%20or%20higher-blue.svg)
 ![Platform](https://img.shields.io/badge/Platform-iOS%20|%20tvOS%20|%20watchOS%20|%20macOS-red.svg)
 
 # NXColorsetMaker
