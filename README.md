@@ -8,6 +8,7 @@ I needed to apply iOS / tvOS dark mode. but there were so many things to do and 
 
 # How it works
 When you make a colorset on Xcode, JSON file and directory is generated. so __NXColorsetMaker__ makes same directory and JSON file from an Excel file.  
+
 ![Alt text](xcode_json_screen.png?raw=true)
 
 And, __NXColorsetMaker__ output color values are HEX format, but you can change to float value format.
