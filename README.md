@@ -14,7 +14,7 @@ I needed to apply iOS / tvOS dark mode. but there were so many things to do and 
 # How it works
 When you make a colorset on Xcode, JSON file and directory is generated. so __NXColorsetMaker__ makes same directory and JSON file from an Excel file.  
 
-![Alt text](xcode_json_screen.png?raw=true)
+![Alt text](images/xcode_json_screen.png?raw=true)
 
 And, __NXColorsetMaker__ output color values are HEX format, but you can change to float value format.
 
@@ -66,6 +66,10 @@ $ python3 makeColorSet.py
 or
 $ python3 makeColorSet.py -f ~/colors.xlsx -t universal iphone ipad -c -d ~/repository/myproject/image.xcassets/colorSets
 ```
+
+## Result
+![Alt text](images/result.png?raw=true)
+
 
 # Author
 This is [Jinwook Jeon](http://Nicejinux.NET).   
