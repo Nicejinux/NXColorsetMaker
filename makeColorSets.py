@@ -3,7 +3,6 @@ import os
 import io
 import json
 import enum
-import struct
 import argparse
 from openpyxl import load_workbook
 from collections import OrderedDict
@@ -132,9 +131,9 @@ def extract():
 
 rootDir = './ColorSets'
 jsonFile = 'Contents.json'
-excelFileName = "./colorSheet.xlsx"
-excelSheetName = "Sheet1"
-deviceTypeStr = "universal"
+excelFileName = './colorSheet.xlsx'
+excelSheetName = 'Sheet1'
+deviceTypeStr = 'universal'
 deviceTypes = [IdiomType.UNIVERSAL]
 macCatalyst = False
 
@@ -157,14 +156,15 @@ def main():
     args = parser.parse_args()
     excelFileName = args.file
     excelSheetName = args.sheet
-    deviceTypeList = args.types
+    deviceTypeStr = args.types
     macCatalyst = args.catalyst
     rootDir = args.directory
 
-    types = []
-    for type in deviceTypeList:
-        types.append(IdiomType[type.upper().strip()])
-    deviceTypes = types
+    typeList = []
+    deviceTypeList = deviceTypeStr.split()
+    for deviceType in deviceTypeList:
+        typeList.append(IdiomType[deviceType.upper().strip()])
+    deviceTypes = typeList
 
     extract()
 
