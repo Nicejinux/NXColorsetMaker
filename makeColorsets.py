@@ -83,6 +83,8 @@ def getAllRows():
     workSheet = wookBook[excelSheetName]
     allRows = []
     for row in workSheet.rows:
+        if row[0].value is None:
+            continue
         allRows.append(row)
     del allRows[0]
     return allRows
