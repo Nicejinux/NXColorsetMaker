@@ -75,7 +75,10 @@ def getColorInfo(row, idiom=IdiomType.UNIVERSAL, isDarkMode=False, isMacCatalyst
         colorInfo["subtype"] = "mac-catalyst"
     if isDarkMode:
         colorInfo["appearances"] = getAppearances()
-    colorInfo["color"] = getColor(str(row[3].value), colorAlpha=str(row[4].value))
+        colorInfo["color"] = getColor(str(row[1].value), colorAlpha=str(row[2].value))
+    else:
+        colorInfo["color"] = getColor(str(row[3].value), colorAlpha=str(row[4].value))
+
     return colorInfo
 
 def getAllRows():
