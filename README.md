@@ -79,9 +79,9 @@ If `row[0].value == 'name'`, that row will be ignored.
 ## Excute
 All options have default value. so you don't have to add any option if you can use default values.
 ```swift
-$ python3 makeColorSet.py
+$ python3 makeColorsets.py
 or
-$ python3 makeColorSet.py -f ~/colors.xlsx -t universal iphone ipad -c -d ~/repository/myproject/image.xcassets/colorSets
+$ python3 makeColorsets.py -f ~/colors.xlsx -t universal iphone ipad -c -d ~/repository/myproject/image.xcassets/colorSets
 ```
 
 ## Result
