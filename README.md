@@ -12,15 +12,30 @@ I needed to apply iOS / tvOS dark mode. but there were so many things to do and 
 
 
 # How it works
-When you make a colorset on Xcode, JSON file and directory is generated. so __NXColorsetMaker__ makes same directory and JSON file from an Excel file.  
+When you make a colorset on Xcode, JSON file and directory is generated. so __NXColorsetMaker__ makes same directory and JSON file as Xcode from an Excel file. and __UIColor+DarkMode.swift__ file is generated in the __NXColorsetMaker__ directory.  
+
+```
+    ColorSets
+       ㄴ Sheet1
+           ㄴ Contents.json
+           ㄴ defaultText.colorset
+	       ㄴ Contents.json
+	   ㄴ defaultCellTextColor.colorset
+	       ㄴ Contents.json
+       ㄴ Sheet2
+           ㄴ Contents.json
+	   .
+	   .
+	   .
+```
 
 ![Alt text](images/xcode_json_screen.png?raw=true)
 
 And, __NXColorsetMaker__ output color values are HEX format, but you can change to float value format.
 
 ```ruby
-HEX: getFormattedHexValue() # default
-Float: getFormattedFloatValue()
+HEX: _getHex() # default
+Float: _getFloat()
 ```
 
 
@@ -33,7 +48,9 @@ $ sudo pip3 install openpyxl
 
 ## makeColorsets
 Download __makeColorsets.py__ and __colorSheet.xlsx__ where you want.  
-Fill all the colors that you are using with designers in the Excel file properly.
+Fill all the colors that you are using with designers in the Excel file properly.  
+Please don't change header title in the first row of Excel file.  
+If `row[0].value == 'name'`, that row will be ignored.
 
 
 # Usage
@@ -41,22 +58,22 @@ Fill all the colors that you are using with designers in the Excel file properly
 ```swift
   -h, --help            show this help message and exit
   -f EXCEL_FILE_NAME, --file EXCEL_FILE_NAME
-                        excel file name.
-                        default: ./colorSheet.xlsx
+                        excel file name.  
+			default: ./colorSheet.xlsx
   -s EXCEL_SHEET_NAME, --sheet EXCEL_SHEET_NAME
-                        excel sheet name.
-                        default: Sheet1
+                        excel sheet name. 
+			This option is optional.
+			if don't use this option, 
+			all sheets colors will be extracted
   -t [TYPE [TYPE ...]], --type [TYPE [TYPE ...]]
-                        target device types.
-                        default: universal
-                        supporting types: [ universal, iphone, ipad, carplay, watch, tv, mac ]
+                        target device types. 
+			default: universal
+			all types: [ universal, iphone, ipad, carplay, watch, tv, mac ]
                         ex) -t iphone ipad
   -d DESTINATION_DIR, --dir DESTINATION_DIR
-                        target directory.
-                        default: ./ColorSets
-  -c, --catalyst        add colorset for mac-catalyst.
-                        if type doesn't have ipad, this option will be ignored
-                        ex) -t ipad -c
+                        target directory. 
+			default: ./ColorSets
+  -c, --catalyst        add colorset for mac-catalyst ex) -t ipad -c
 ```
 
 ## Excute
