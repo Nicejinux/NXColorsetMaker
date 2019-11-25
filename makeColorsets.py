@@ -75,7 +75,7 @@ class ColorComponent():
         red = self._getFloat(color[1:3])
         green = self._getFloat(color[3:5])
         blue = self._getFloat(color[5:7])
-        return f'UIColor(red: {red}, green: {green}, blue: {blue}, alpha, {alpha})'
+        return f'UIColor(red: {red}, green: {green}, blue: {blue}, alpha: {alpha})'
 
     def _getComponent(self, isHex=True, isDark=False):
         color = OrderedDict()
@@ -265,7 +265,8 @@ def extract():
 
 rootDir = './ColorSets'
 jsonFile = 'Contents.json'
-excelFileName = './colorSheet.xlsx'
+# excelFileName = './colorSheet.xlsx'
+excelFileName = './Darkmode_colorSheet_v0.1.xlsx'
 excelSheetName = ''
 deviceTypeStr = 'universal'
 deviceTypes = [IdiomType.UNIVERSAL]
