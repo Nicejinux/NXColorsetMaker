@@ -156,7 +156,7 @@ def getAllSheets():
     global excelSheetName
 
     workBook = load_workbook(excelFileName, data_only=True)
-    sheetNames = excelSheetName == '' and workBook.get_sheet_names() or [excelSheetName]
+    sheetNames = excelSheetName == '' and workBook.sheetnames or [excelSheetName]
     sheets = OrderedDict()
     for sheetName in sheetNames:
         workSheet = workBook[sheetName]
