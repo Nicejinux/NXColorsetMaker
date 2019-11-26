@@ -63,7 +63,7 @@ If `row[0].value == 'name'`, that row will be ignored.
   -s EXCEL_SHEET_NAME, --sheet EXCEL_SHEET_NAME
                         excel sheet name. 
 			This option is optional.
-			if don't use this option, 
+			if don't specify this option, 
 			all sheets colors will be extracted
   -t [TYPE [TYPE ...]], --type [TYPE [TYPE ...]]
                         target device types. 
