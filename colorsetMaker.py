@@ -122,7 +122,6 @@ def main():
     global macCatalyst
 
     parser = argparse.ArgumentParser()
-    # parser.add_argument('-f', '--file', metavar="EXCEL_FILE_NAME", dest="file", type=str, default=excelFileName, help=f"excel file name. default: {excelFileName}")
     parser.add_argument('-f', '--file', metavar="EXCEL_FILE_NAMES", dest="files", nargs='*', default=excelFileNamesStr, help=f"excel or csv file name. default: {excelFileNamesStr}")
     parser.add_argument('-t', '--type', metavar="TYPE", dest="types", nargs='*', default=deviceTypeStr, help=f"target device types. default: {deviceTypeStr} / all types: [ universal, iphone, ipad, carplay, watch, tv, mac ] / ex) -t iphone ipad")
     parser.add_argument('-d', '--dir', metavar="DESTINATION_DIR", dest="directory", type=str, default=rootDir, help=f"target directory. default: {rootDir}")
