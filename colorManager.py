@@ -43,9 +43,14 @@ class ColorExtensionModel():
 
 class ColorComponent():
     # Initializer
-    def __init__(self, colorModel: ColorModel):
-        self.model = colorModel
-        self.extension = ColorExtensionModel(self.model.name,
+    def __init__(self, model: ColorModel):
+        # self.model = model
+        self.name = model.name
+        self.lightColor = model.lightColor
+        self.lightColorAlpha = model.lightColorAlpha
+        self.darkColor = model.darkColor
+        self.darkColorAlpha = model.darkColorAlpha
+        self.extension = ColorExtensionModel(self.name,
                                              self.__getExtensionStr(),
                                              self.__getExtensionStr(isDark=True))
 
@@ -59,8 +64,8 @@ class ColorComponent():
 
     # Private Methods
     def __getExtensionStr(self, isDark=False):
-        color = isDark and self.model.darkColor or self.model.lightColor
-        alpha = isDark and self.model.darkColorAlpha or self.model.lightColorAlpha
+        color = isDark and self.darkColor or self.lightColor
+        alpha = isDark and self.darkColorAlpha or self.lightColorAlpha
 
         red = self.__getFloat(color[1:3])
         green = self.__getFloat(color[3:5])
@@ -71,8 +76,8 @@ class ColorComponent():
         color = OrderedDict()
         color["color-space"] = "srgb"
         components = OrderedDict()
-        targetColor = isDark and self.model.darkColor or self.model.lightColor
-        alpha = isDark and self.model.darkColorAlpha or self.model.lightColorAlpha
+        targetColor = isDark and self.darkColor or self.lightColor
+        alpha = isDark and self.darkColorAlpha or self.lightColorAlpha
 
         components["red"] = isHex and self.__getHex(targetColor[1:3]) or self.__getFloat(targetColor[1:3])
         components["green"] = isHex and self.__getHex(targetColor[3:5]) or self.__getFloat(targetColor[3:5])

@@ -75,8 +75,8 @@ def start():
 
 rootDir = './ColorSets'
 jsonFile = 'Contents.json'
-# excelFileName = './colorSheet.xlsx'
-excelFileName = './Darkmode_colorSheet_v0.1.xlsx'
+excelFileName = './colorSheet.xlsx'
+# excelFileName = './Darkmode_colorSheet_v0.1.xlsx'
 extensionFileName = 'UIColor+DarkMode.swift'
 deviceTypeStr = 'universal'
 deviceTypes = [IdiomType.UNIVERSAL]

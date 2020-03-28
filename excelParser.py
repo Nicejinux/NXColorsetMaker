@@ -23,6 +23,7 @@ import csv
 import openpyxl
 from idiomType import IdiomType
 from collections import OrderedDict
+from colorManager import ColorModel
 from colorManager import ColorComponent
 from templateManager import JSONTemplate
 from templateManager import SwiftTemplate
@@ -46,7 +47,8 @@ class ExcelParser():
             for row in workSheet.rows:
                 if row[0].value is None or row[0].value == 'name':
                     continue
-                allColors.append(ColorComponent(row))
+                model = self.__getColorModelFromExcelRow(row)
+                allColors.append(ColorComponent(model))
             colorDict[sheetName] = allColors
             self.numberOfColors += len(allColors)
 
@@ -57,7 +59,6 @@ class ExcelParser():
         colorDict = OrderedDict()
 
 
-    # Private Methods
     def getJSONDict(self, color: ColorComponent, idioms=[IdiomType.UNIVERSAL], needMacCatalyst=False):
         colorList = []
         template = JSONTemplate()
@@ -76,3 +77,13 @@ class ExcelParser():
         colorSetDic["colors"] = colorList
 
         return colorSetDic
+
+
+    # Private Methods
+    def __getColorModelFromExcelRow(self, row):
+        model = ColorModel(name=row[0].value, 
+                           lightColor=row[1].value, 
+                           lightColorAlpha=row[2].value,
+                           darkColor=row[3].value,
+                           darkColorAlpha=row[4].value)
+        return model
