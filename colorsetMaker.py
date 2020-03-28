@@ -59,11 +59,7 @@ def makeColorExtension(allDataDict: OrderedDict):
 
 
 def start():
-    allDataDict = OrderedDict()
-    if isCSV:
-        allDataDict = excelParser.colorComponentsFromCSVs(excelFileNames)
-    else:
-        allDataDict = excelParser.colorComponentsFromExcel(excelFileNames[0])
+    allDataDict = excelParser.colorComponentsFromFiles(excelFileNames)
 
     printHeader(f' {excelParser.numberOfColors} colors are loaded')
     printHeader(' Container folder is creating')
@@ -86,19 +82,24 @@ def updateArgs(args):
     global excelFileNames
     global deviceTypes
     global macCatalyst
-    global isCSV
 
     excelFileNamesStr = args.files
     deviceTypeStr = args.types
     macCatalyst = args.catalyst
     rootDir = args.directory
-    isCSV = args.isCSV
 
-    for fileName in excelFileNamesStr.split():
-        excelFileNames.append(fileName)
+    if type(excelFileNamesStr) == str:
+        excelFileNames = [excelFileNamesStr]
+    elif type(excelFileNamesStr) == list:
+        excelFileNames = excelFileNamesStr
 
-    for deviceType in deviceTypeStr.split():
-        deviceTypes.append(IdiomType[deviceType.upper().strip()])
+    if type(deviceTypeStr) == str:
+        deviceTypes = [IdiomType[deviceTypeStr.upper()]]
+    elif type(deviceTypeStr) == list:
+        deviceTypeList = []
+        for deviceType in deviceTypeStr:
+            deviceTypeList.append(IdiomType[deviceType.upper()])
+        deviceTypes = deviceTypeList
 
 
 rootDir = './ColorSets'
@@ -112,7 +113,6 @@ macCatalyst = False
 excelParser = ExcelParser()
 fileManager = FileManager()
 numberOfColors = 0
-isCSV = False
 
 
 def main():
@@ -120,15 +120,13 @@ def main():
     global excelFileNamesStr
     global deviceTypeStr
     global macCatalyst
-    global isCSV
 
     parser = argparse.ArgumentParser()
     # parser.add_argument('-f', '--file', metavar="EXCEL_FILE_NAME", dest="file", type=str, default=excelFileName, help=f"excel file name. default: {excelFileName}")
-    parser.add_argument('-f', '--file', metavar="EXCEL_FILE_NAMES", dest="files", nargs='*', default=excelFileNamesStr, help=f"excel file name. default: {excelFileNamesStr}")
+    parser.add_argument('-f', '--file', metavar="EXCEL_FILE_NAMES", dest="files", nargs='*', default=excelFileNamesStr, help=f"excel or csv file name. default: {excelFileNamesStr}")
     parser.add_argument('-t', '--type', metavar="TYPE", dest="types", nargs='*', default=deviceTypeStr, help=f"target device types. default: {deviceTypeStr} / all types: [ universal, iphone, ipad, carplay, watch, tv, mac ] / ex) -t iphone ipad")
     parser.add_argument('-d', '--dir', metavar="DESTINATION_DIR", dest="directory", type=str, default=rootDir, help=f"target directory. default: {rootDir}")
     parser.add_argument('-c', '--catalyst', dest="catalyst", action='store_true', help="add colorset for mac-catalyst ex) -t ipad -c")
-    parser.add_argument('--csv', dest="isCSV", action='store_true', help="support csv file ex) -f file1.csv file2.csv --csv")
  
     updateArgs(parser.parse_args())
 

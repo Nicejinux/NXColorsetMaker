@@ -36,6 +36,22 @@ class ExcelParser():
 
 
     # Public Methods
+    def colorComponentsFromFiles(self, fileNames: [str]):
+        colorDict = OrderedDict()
+
+        for fileName in fileNames:
+            if fileName.endswith('.csv'):
+                cvsDict = self.colorComponentsFromCSV(fileName)
+                self.__mergeDict(colorDict, cvsDict)
+            elif fileName.endswith('.xlsx') or fileName.endswith('.xls'):
+                excelDict = self.colorComponentsFromExcel(fileName)
+                self.__mergeDict(colorDict, excelDict)
+            else:
+                continue
+
+        return colorDict
+
+
     def colorComponentsFromExcel(self, fileName: str):
         book = pandas.ExcelFile(fileName)
         sheetNames = book.sheet_names
@@ -55,19 +71,18 @@ class ExcelParser():
         return colorDict
 
 
-    def colorComponentsFromCSVs(self, fileNames: [str]):
+    def colorComponentsFromCSV(self, fileName: str):
         colorDict = OrderedDict()
 
-        for fileName in fileNames:
-            book = pandas.read_csv(fileName)
-            allColors = []
-            for _, row in book.iterrows():
-                if row[0] is None or row[0] == 'name':
-                    continue
-                model = self.__getColorModelFromExcelRow(row)
-                allColors.append(ColorComponent(model))
-            colorDict[Path(fileName).stem] = allColors
-            self.numberOfColors += len(allColors)
+        book = pandas.read_csv(fileName)
+        allColors = []
+        for _, row in book.iterrows():
+            if row[0] is None or row[0] == 'name':
+                continue
+            model = self.__getColorModelFromExcelRow(row)
+            allColors.append(ColorComponent(model))
+        colorDict[Path(fileName).stem] = allColors
+        self.numberOfColors += len(allColors)
 
         return colorDict
 
@@ -93,5 +108,10 @@ class ExcelParser():
 
 
     # Private Methods
+    def __mergeDict(self, mainDict: OrderedDict, targetDict: OrderedDict):
+        # if main dict has same key, it will be overwrited.
+        for key in targetDict.keys():
+            mainDict[key] = targetDict[key]
+
     def __getColorModelFromExcelRow(self, row):
         return ColorModel(name=row[0], lightColor=row[1], lightColorAlpha=row[2], darkColor=row[3], darkColorAlpha=row[4])
