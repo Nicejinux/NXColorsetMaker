@@ -1,5 +1,5 @@
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
-![Python](https://img.shields.io/badge/Python-3.7-green.svg)
+![Python](https://img.shields.io/badge/Python-3.7%20or%20higher-green.svg)
 ![Xcode](https://img.shields.io/badge/Xcode-9%20or%20higher-blue.svg)
 ![Platform](https://img.shields.io/badge/Platform-%20iOS%20|%20tvOS%20|%20watchOS%20|%20macOS-red.svg)
 
@@ -34,8 +34,8 @@ When you make a colorset on Xcode, JSON file and directory is generated. so __NX
 And, __NXColorsetMaker__ output color values are HEX format, but you can change to float value format.
 
 ```ruby
-HEX: _getHex() # default
-Float: _getFloat()
+HEX: __getHex() # default
+Float: __getFloat()
 ```
 
 
@@ -74,9 +74,9 @@ If `row[0].value == 'name'`, that row will be ignored.
 ## Excute
 All options have default value. so you don't have to add any option if you can use default values.
 ```swift
-$ python3 makeColorsets.py
+$ python3 colorsetMaker.py
 or
-$ python3 makeColorsets.py -f ~/colors.xlsx -t universal iphone ipad -c -d ~/repository/myproject/image.xcassets/colorSets
+$ python3 colorsetMaker.py -f ~/colors.xlsx -t universal iphone ipad -c -d ~/repository/myproject/image.xcassets/colorSets
 ```
 
 ## Result
