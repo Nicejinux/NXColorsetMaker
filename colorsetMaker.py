@@ -62,7 +62,7 @@ def start():
     allDataDict = excelParser.colorComponentsFromExcel(excelFileName)
     printHeader(f' {excelParser.numberOfColors} colors are loaded')
     printHeader(' Container folder is creating')
-    
+
     fileManager.createContainerDirAndInfoFile(rootDir)
     print(f'{rootDir}/{fileManager.jsonFileName} file is created')
 
@@ -77,7 +77,6 @@ def start():
 
 
 rootDir = './ColorSets'
-jsonFile = 'Contents.json'
 excelFileName = './colorSheet.xlsx'
 # excelFileName = './Darkmode_colorSheet_v0.1.xlsx'
 extensionFileName = 'UIColor+DarkMode.swift'
