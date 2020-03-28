@@ -47,7 +47,7 @@ $ sudo pip3 install openpyxl
 ```
 
 ## makeColorsets
-Download __makeColorsets.py__ and __colorSheet.xlsx__ where you want.  
+Download all files where you want.  
 Fill all the colors that you are using with designers in the Excel file properly.  
 Please don't change header title in the first row of Excel file.  
 If `row[0].value == 'name'`, that row will be ignored.
@@ -60,11 +60,6 @@ If `row[0].value == 'name'`, that row will be ignored.
   -f EXCEL_FILE_NAME, --file EXCEL_FILE_NAME
                         excel file name.  
 			default: ./colorSheet.xlsx
-  -s EXCEL_SHEET_NAME, --sheet EXCEL_SHEET_NAME
-                        excel sheet name. 
-			This option is optional.
-			if don't specify this option, 
-			all sheets colors will be extracted
   -t [TYPE [TYPE ...]], --type [TYPE [TYPE ...]]
                         target device types. 
 			default: universal
