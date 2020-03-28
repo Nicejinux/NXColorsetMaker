@@ -82,6 +82,9 @@ $ python3 colorsetMaker.py -f ~/colors.xlsx -t universal iphone ipad -c -d ~/rep
 ## Result
 ![Alt text](images/result.png?raw=true)
 
+# Will be improved
+- [x] Split files to classes
+- [ ] Support CSV file
 
 # Author
 This is [Jinwook Jeon](http://Nicejinux.NET).   
