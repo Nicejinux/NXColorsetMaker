@@ -19,8 +19,8 @@
 # TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 # SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-import csv
-import openpyxl
+import pandas
+from pathlib import Path
 from idiomType import IdiomType
 from collections import OrderedDict
 from colorManager import ColorModel
@@ -37,15 +37,15 @@ class ExcelParser():
 
     # Public Methods
     def colorComponentsFromExcel(self, fileName: str):
-        workBook = openpyxl.load_workbook(fileName, data_only=True)
-        sheetNames = workBook.sheetnames
+        book = pandas.ExcelFile(fileName)
+        sheetNames = book.sheet_names
         colorDict = OrderedDict()
 
         for sheetName in sheetNames:
-            workSheet = workBook[sheetName]
+            sheet = book.parse(sheetName)
             allColors = []
-            for row in workSheet.rows:
-                if row[0].value is None or row[0].value == 'name':
+            for _, row in sheet.iterrows():
+                if row[0] is None or row[0] == 'name':
                     continue
                 model = self.__getColorModelFromExcelRow(row)
                 allColors.append(ColorComponent(model))
@@ -55,8 +55,21 @@ class ExcelParser():
         return colorDict
 
 
-    def colorComponentsFromCSV(self, fileName: str):
+    def colorComponentsFromCSVs(self, fileNames: [str]):
         colorDict = OrderedDict()
+
+        for fileName in fileNames:
+            book = pandas.read_csv(fileName)
+            allColors = []
+            for _, row in book.iterrows():
+                if row[0] is None or row[0] == 'name':
+                    continue
+                model = self.__getColorModelFromExcelRow(row)
+                allColors.append(ColorComponent(model))
+            colorDict[Path(fileName).stem] = allColors
+            self.numberOfColors += len(allColors)
+
+        return colorDict
 
 
     def getJSONDict(self, color: ColorComponent, idioms=[IdiomType.UNIVERSAL], needMacCatalyst=False):
@@ -81,9 +94,4 @@ class ExcelParser():
 
     # Private Methods
     def __getColorModelFromExcelRow(self, row):
-        model = ColorModel(name=row[0].value, 
-                           lightColor=row[1].value, 
-                           lightColorAlpha=row[2].value,
-                           darkColor=row[3].value,
-                           darkColorAlpha=row[4].value)
-        return model
+        return ColorModel(name=row[0], lightColor=row[1], lightColorAlpha=row[2], darkColor=row[3], darkColorAlpha=row[4])
