@@ -61,16 +61,19 @@ def makeColorExtension(allDataDict: OrderedDict):
 def start():
     allDataDict = excelParser.colorComponentsFromExcel(excelFileName)
     printHeader(f' {excelParser.numberOfColors} colors are loaded')
-
     printHeader(' Container folder is creating')
+    
     fileManager.createContainerDirAndInfoFile(rootDir)
-    printHeader(' Colorsets are creating')
+    print(f'{rootDir}/{fileManager.jsonFileName} file is created')
 
+    printHeader(' Colorsets are creating')
     makeJSON(allDataDict)
+
+    printHeader(f' {extensionFileName} is creating')
     makeColorExtension(allDataDict)
 
-    printHeader(f' {excelParser.numberOfColors} colorsets are created')
-
+    print(f'{rootDir}/{extensionFileName} file is created')
+    printHeader(f' DONE: {excelParser.numberOfColors} colorsets are all created')
 
 
 rootDir = './ColorSets'
