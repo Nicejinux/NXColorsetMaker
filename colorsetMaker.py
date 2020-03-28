@@ -41,7 +41,7 @@ def printHeader(title):
     print()
 
 
-def makeJSON(allDataDict: OrderedDict):
+def makeColorSetJSON(allDataDict: OrderedDict):
     for key in allDataDict:
         printHeader(f' \'{key}\' folder is creating')
         fileManager.createContainerDirAndInfoFile(f'{rootDir}/{key}')
@@ -67,7 +67,7 @@ def start():
     print(f'{rootDir}/{fileManager.jsonFileName} file is created')
 
     printHeader(' Colorsets are creating')
-    makeJSON(allDataDict)
+    makeColorSetJSON(allDataDict)
 
     printHeader(f' {extensionFileName} is creating')
     makeColorExtension(allDataDict)
