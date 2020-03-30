@@ -20,10 +20,9 @@
 # SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-from idiomType import IdiomType
 from collections import OrderedDict
-from colorManager import ColorComponent
-from colorManager import ColorExtensionModel
+from libs.idiomType import IdiomType
+from libs.colorManager import ColorComponent, ColorExtensionModel
 
 
 class SwiftTemplate():

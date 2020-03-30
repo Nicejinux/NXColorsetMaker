@@ -21,12 +21,10 @@
 
 import pandas
 from pathlib import Path
-from idiomType import IdiomType
 from collections import OrderedDict
-from colorManager import ColorModel
-from colorManager import ColorComponent
-from templateManager import JSONTemplate
-from templateManager import SwiftTemplate
+from libs.idiomType import IdiomType
+from libs.templateManager import JSONTemplate
+from libs.colorManager import ColorModel, ColorComponent
 
 
 class ExcelParser():

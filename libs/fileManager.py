@@ -23,11 +23,8 @@
 import io
 import os
 import json
-from templateManager import SwiftTemplate
-from templateManager import JSONTemplate
-from colorManager import ColorComponent
-from colorManager import ColorExtensionModel
 from collections import OrderedDict
+from libs.templateManager import JSONTemplate, SwiftTemplate
 
 
 class FileManager():

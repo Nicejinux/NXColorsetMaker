@@ -21,10 +21,10 @@
 
 
 import argparse
-from idiomType import IdiomType
 from collections import OrderedDict
-from excelParser import ExcelParser
-from fileManager import FileManager
+from libs.idiomType import IdiomType
+from libs.excelParser import ExcelParser
+from libs.fileManager import FileManager
 
 
 def printSeparator(count):
