@@ -13,6 +13,8 @@ I needed to apply iOS / tvOS dark mode. but there were so many things to do and 
 
 # How it works
 When you make a colorset on Xcode, JSON file and directory is generated. so __NXColorsetMaker__ makes same directory and JSON file as Xcode from an Excel file. and __UIColor+DarkMode.swift__ file is generated in the __NXColorsetMaker__ directory.  
+If you use __.xlsx__ file, each __*sheet name*__ is used for the Colorsets directory name.  
+If you use __.csv__ file, each __*file name*__ is used for the Colorsets directory name.
 
 ```
     ColorSets
@@ -40,10 +42,10 @@ Float: __getFloat()
 
 
 # Install component
-## openpyxl
-You should install __*openpyxl*__ to read an Excel file. I assume that you are using python3.
+## pandas
+You should install __*pandas*__ to read an Excel file. I assume that you are using python3.
 ```ruby
-$ sudo pip3 install openpyxl
+$ sudo pip3 install pandas
 ```
 
 ## makeColorsets
@@ -57,8 +59,9 @@ If `row[0].value == 'name'`, that row will be ignored.
 ## Options
 ```swift
   -h, --help            show this help message and exit
-  -f EXCEL_FILE_NAME, --file EXCEL_FILE_NAME
-                        excel file name.  
+  -f EXCEL_FILE_NAME, --file EXCEL_FILE_NAMES
+                        excel file names.
+			ex) -f colorSheet1.csv colorSheet2.csv
 			default: ./colorSheet.xlsx
   -t [TYPE [TYPE ...]], --type [TYPE [TYPE ...]]
                         target device types. 
@@ -76,7 +79,7 @@ All options have default value. so you don't have to add any option if you can u
 ```swift
 $ python3 colorsetMaker.py
 or
-$ python3 colorsetMaker.py -f ~/colors.xlsx -t universal iphone ipad -c -d ~/repository/myproject/image.xcassets/colorSets
+$ python3 colorsetMaker.py -f ~/colors.xlsx -t universal iphone ipad -c -d ~/myproject/image.xcassets/colorSets
 ```
 
 ## Result
@@ -84,7 +87,7 @@ $ python3 colorsetMaker.py -f ~/colors.xlsx -t universal iphone ipad -c -d ~/rep
 
 # Will be improved
 - [x] Split files to classes
-- [ ] Support CSV file
+- [x] Support CSV file
 
 # Author
 This is [Jinwook Jeon](http://Nicejinux.NET).   
