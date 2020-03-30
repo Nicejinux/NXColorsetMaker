@@ -27,7 +27,7 @@ from collections import OrderedDict
 from libs.templateManager import JSONTemplate, SwiftTemplate
 
 
-class FileManager():
+class FileManager:
     # Initializer
     def __init__(self):
         self.jsonFileName = 'Contents.json'

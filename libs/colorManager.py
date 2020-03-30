@@ -23,7 +23,7 @@
 from collections import OrderedDict
 
 
-class ColorModel():
+class ColorModel:
     # Initializer
     def __init__(self, name: str, lightColor='#ffffff', lightColorAlpha=1.0, darkColor='#000000', darkColorAlpha=1.0):
         self.name = name
@@ -33,7 +33,7 @@ class ColorModel():
         self.darkColorAlpha = darkColorAlpha
 
 
-class ColorExtensionModel():
+class ColorExtensionModel:
     # Initializer
     def __init__(self, name: str, lightStr: str, darkStr: str):
         self.name = name
@@ -41,7 +41,7 @@ class ColorExtensionModel():
         self.darkUIColorText = darkStr
 
 
-class ColorComponent():
+class ColorComponent:
     # Initializer
     def __init__(self, model: ColorModel):
         # self.model = model

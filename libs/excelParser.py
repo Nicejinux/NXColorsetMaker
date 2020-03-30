@@ -27,7 +27,7 @@ from libs.templateManager import JSONTemplate
 from libs.colorManager import ColorModel, ColorComponent
 
 
-class ExcelParser():
+class ExcelParser:
     # Initializer
     def __init__(self):
         self.numberOfColors = 0
@@ -107,7 +107,7 @@ class ExcelParser():
 
     # Private Methods
     def __mergeDict(self, mainDict: OrderedDict, targetDict: OrderedDict):
-        # if main dict has same key, it will be overwrited.
+        # if main dict has same key, it will be overwritten.
         for key in targetDict.keys():
             mainDict[key] = targetDict[key]
 

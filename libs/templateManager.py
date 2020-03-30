@@ -25,7 +25,7 @@ from libs.idiomType import IdiomType
 from libs.colorManager import ColorComponent, ColorExtensionModel
 
 
-class SwiftTemplate():
+class SwiftTemplate:
     # Public Methods
     def getHeaderComment(self, fileName: str):
         comment = f'''//
@@ -64,7 +64,7 @@ class SwiftTemplate():
         return extensionStr
 
 
-class JSONTemplate():
+class JSONTemplate:
     # Public Methods
     def getInfo(self):
         infoDic = OrderedDict()
