@@ -59,7 +59,7 @@ class ExcelParser():
             sheet = book.parse(sheetName)
             allColors = []
             for _, row in sheet.iterrows():
-                if row[0] is None or row[0] == 'name':
+                if pandas.isna(row[0]) or row[0] == 'name':
                     continue
                 model = self.__getColorModelFromExcelRow(row)
                 allColors.append(ColorComponent(model))
@@ -75,7 +75,7 @@ class ExcelParser():
         book = pandas.read_csv(fileName)
         allColors = []
         for _, row in book.iterrows():
-            if row[0] is None or row[0] == 'name':
+            if pandas.isna(row[0]) or row[0] == 'name':
                 continue
             model = self.__getColorModelFromExcelRow(row)
             allColors.append(ColorComponent(model))
